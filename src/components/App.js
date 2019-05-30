@@ -3,27 +3,27 @@ import PageTemplate from './PageTemplate';
 import TodoInput from './TodoInput';
 import TodoList from './TodoList';
 
+const initTodos = new Array(500)
+  .fill(0)
+  .map((foo, index) => ({ id: index, text: `일정 ${index}`, done: false }));
 class App extends Component {
   state = {
     input: '',
-    todos: [
-      { id: 0, text: '리액트 공부', done: true },
-      { id: 1, text: '컴포넌트 스타일링', done: false },
-    ]
-  }
+    todos: initTodos
+  };
 
-  handleChange = (e) => {
+  handleChange = e => {
     const { value } = e.target;
     this.setState({
       input: value
-    })
-  }
+    });
+  };
 
   getId = () => {
     return ++this.id;
-  }
+  };
 
-  handleInsert = (e) => {
+  handleInsert = e => {
     const { todos, input } = this.state;
     const newTodo = {
       text: input,
@@ -34,54 +34,54 @@ class App extends Component {
     this.setState({
       todos: [...todos, newTodo],
       input: ''
-    })
-  }
+    });
+  };
 
-  handleToggle = (id) => {
-    console.log(`handleToggle: ${id}`)
+  handleToggle = id => {
+    console.log(`handleToggle: ${id}`);
     const { todos } = this.state;
     const index = todos.findIndex(todo => todo.id === id);
 
     const toggled = {
       ...todos[index],
       done: !todos[index].done
-    }
+    };
     this.setState({
       todos: [
         ...todos.slice(0, index),
         toggled,
         ...todos.slice(index + 1, todos.length)
       ]
-    })
-  }
+    });
+  };
 
-  handleRemove = (id) => {
-    console.log(`===> ${id}`)
+  handleRemove = id => {
+    console.log(`===> ${id}`);
     const { todos } = this.state;
     const index = todos.findIndex(todo => todo.id === id);
 
     this.setState({
-      todos: [
-        ...todos.slice(0, index),
-        ...todos.slice(index + 1, todos.length)
-      ]
+      todos: [...todos.slice(0, index), ...todos.slice(index + 1, todos.length)]
     });
-  }
+  };
 
   render() {
     const { input, todos } = this.state;
-    const {
-      handleChange,
-      handleInsert,
-      handleToggle,
-      handleRemove
-    } = this;
+    const { handleChange, handleInsert, handleToggle, handleRemove } = this;
 
     return (
-        <PageTemplate>
-          <TodoInput onChange={handleChange} onInsert={handleInsert} value={input} />
-          <TodoList todos={todos} onToggle={handleToggle} onRemove={handleRemove} />
-        </PageTemplate>
+      <PageTemplate>
+        <TodoInput
+          onChange={handleChange}
+          onInsert={handleInsert}
+          value={input}
+        />
+        <TodoList
+          todos={todos}
+          onToggle={handleToggle}
+          onRemove={handleRemove}
+        />
+      </PageTemplate>
     );
   }
 }

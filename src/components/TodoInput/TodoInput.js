@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './TodoInput.scss';
 import classNames from 'classnames/bind';
+import Button from '@material-ui/core/Button';
 
 const cx = classNames.bind(styles);
 
@@ -14,9 +15,9 @@ const TodoInput = ({ value, onChange, onInsert }) => {
   return (
     <div className={cx('todo-input')}>
       <input onChange={onChange} value={value} onKeyPress={handleKeyPress} />
-      <div className={cx('add-button')} onClick={onInsert}>
+      <Button className={cx('add-button')} onClick={onInsert}>
         추가
-      </div>
+      </Button>
     </div>
   );
 };

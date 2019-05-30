@@ -20,17 +20,9 @@
     }
 
     .add-button {
-        width: 5rem;
-        height: 2rem;
+        background: $oc-green-7;
+        color: white;
         margin-left: 1rem;
-        border: 1px solid $oc-green-7;
-        color: $oc-green-7;
-        font-weight: 500;
-        font-size: 1.1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
 
         &:hover {
             background: $oc-green-7;
