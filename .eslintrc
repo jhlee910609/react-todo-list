@@ -1,8 +1,5 @@
 {
-    "extends": "react-app",
-    "rules": {
-        "quotes": ["error", "single", {
-            "avoidEscape": true
-        }]
+    "eslintConfig": {
+        "extends": "react-app"
     }
 }
