@@ -1,16 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styles from './TodoItem.scss';
-import classNames from 'classnames/bind';
+// import classNames from 'classnames/bind';
+import BaseComponent from '../../BaseComponent'
 
-const cx = classNames.bind(styles);
+// const cx = classNames.bind(styles);
 
-class TodoItem extends Component {
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.props.done !== nextProps.done;
+class TodoItem extends BaseComponent {
+
+  constructor(props){
+    super(props, styles);
   }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return (this.props.done !== nextProps.done)
+  }
+
 
   render() {
     const { done, children, onToggle, onRemove } = this.props;
+    console.log(this.props);
+    const cx = this.cx;
     return (
       <div className={cx('todo-item')} onClick={onToggle}>
         <input className={cx('tick')} type="checkbox" checked={done} readOnly />

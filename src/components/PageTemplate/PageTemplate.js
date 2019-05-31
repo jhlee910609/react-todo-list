@@ -1,15 +1,22 @@
 import React from 'react';
-import classNames from 'classnames/bind';
-import styles from './PageTemplate.scss';
+import BaseComponent from '../../BaseComponent'
+import styles from './PageTemplate.scss'
 
+export default class PageTemplate extends BaseComponent {
 
-const cx = classNames.bind(styles);
+  constructor(props){
+    super(props, styles);
+  }
 
-const PageTemplate = ({ children }) => (
-  <div className={cx('page-template')}>
-    <h1>일정관리</h1>
-    <div className={cx('content')}>{children}</div>
-  </div>
-);
+  render () {
+      const { cx } = this;
+      const children = this.props.children;
 
-export default PageTemplate;
+    return (
+      <div className={cx('page-template')}>
+      <h1>일정관리</h1>
+      <div className={cx('content')}>{children}</div>
+    </div>
+      )
+  }
+}
