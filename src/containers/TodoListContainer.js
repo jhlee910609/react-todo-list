@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TodoList from '../components/TodoList';
 import { connect } from 'react-redux';
-import { bindActions, bindActionCreators } from 'redux';
+import { bindActionCreators } from 'redux';
 import * as todosActions from '../modules/todos';
 
 class TodoListContainer extends Component {
@@ -37,6 +37,6 @@ export default connect(
         todos: state.todos
     }),
     (dispatch) => ({
-        todosActions: bindActionCreators(todosActions, dispatch)
+        TodosActions: bindActionCreators(todosActions, dispatch)
     })
 )(TodoListContainer)

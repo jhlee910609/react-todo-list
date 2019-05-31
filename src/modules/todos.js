@@ -34,7 +34,7 @@ export default handleActions({
     },
     [TOGGLE]: (state, action) => {
         const { payload: id } = action;
-        const index = state.findeIndex(todo => todo.get('id') === id);
+        const index = state.findIndex(todo => todo.get('id') === id);
 
         return state.updateIn([index, 'done'], done => !done);
     },

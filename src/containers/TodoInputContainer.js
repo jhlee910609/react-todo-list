@@ -5,9 +5,10 @@ import TodoInput from '../components/TodoInput';
 import * as inputActions from '../modules/input';
 import * as todosActions from '../modules/todos';
 
+// eslint-disable-next-line
 class TodoInputContainer extends Component {
     id = 1;
-    
+
     getId = () => {
         return ++this.id;
     }
@@ -49,5 +50,6 @@ export default connect(
         InputActions: bindActionCreators(inputActions, dispatch),
         TodosActions: bindActionCreators(todosActions, dispatch),
     })
+)(TodoInputContainer)
 
-)
+
